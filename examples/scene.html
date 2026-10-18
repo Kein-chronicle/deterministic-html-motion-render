@@ -1,0 +1,14 @@
+<!doctype html><meta charset="utf-8">
+<style>html,body{margin:0;background:#101820}#stage{position:relative;width:640px;height:360px;overflow:hidden;font:700 40px/1.1 system-ui,sans-serif;color:#fff}
+.box{position:absolute;left:0;top:140px;width:120px;height:80px;background:#e94560;border-radius:12px}
+.tx{position:absolute;left:40px;top:40px;transform-origin:left top}</style>
+<div id="stage"><div class="box" id="b"></div><div class="tx" id="t">Hello motion</div></div>
+<script>
+// Rule: scene state = pure function of the frame index. No Date.now, Math.random, rAF, timers, fetch, accumulated state.
+window.__seek = (f) => {
+  const k = f / 30;                                  // seconds at 30 fps
+  document.getElementById('b').style.transform = `translateX(${Math.min(k, 3) / 3 * 500}px) rotate(${k * 40}deg)`;
+  document.getElementById('t').style.transform = `scale(${1 + 0.15 * Math.sin(k * 3)})`;
+  document.getElementById('t').style.opacity = String(Math.min(1, k / 0.5));
+};
+</script>

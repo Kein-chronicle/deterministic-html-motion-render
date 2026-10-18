@@ -1,0 +1,7 @@
+<!doctype html><meta charset="utf-8">
+<style>html,body{margin:0;background:#101820}#stage{position:relative;width:640px;height:360px;overflow:hidden}.box{position:absolute;left:0;top:140px;width:120px;height:80px;background:#e94560}</style>
+<div id="stage"><div class="box" id="b"></div></div>
+<script>
+let x = 0;                                           // BUG on purpose: accumulated state => jump renders differ from continuous renders
+window.__seek = (f) => { x += 5; document.getElementById('b').style.transform = `translateX(${x}px)`; };
+</script>
